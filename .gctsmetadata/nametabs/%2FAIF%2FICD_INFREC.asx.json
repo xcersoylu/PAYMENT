@@ -1,0 +1,32 @@
+[
+ {
+  "table":"/AIF/ICD_INFREC",
+  "nametab":
+  [
+   {
+    "NAME":"INF_OBJ_NAME",
+    "KEY":"X",
+    "TYPE":"C",
+    "LENGTH":40,
+    "DECIMALS":-1
+   },
+   {
+    "NAME":"RECIPIENT_OBJECT_NAME",
+    "KEY":"X",
+    "TYPE":"C",
+    "LENGTH":40,
+    "DECIMALS":-1
+   }
+  ],
+  "properties":
+  [
+   {
+    "CLIENTDEPENDENCY":"NO",
+    "DELIVERYCLASS":"W",
+    "TABART":"APPL2",
+    "TABFORM":"T",
+    "REFNAME":"-"
+   }
+  ]
+ }
+]

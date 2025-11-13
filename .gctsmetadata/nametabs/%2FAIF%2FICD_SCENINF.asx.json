@@ -1,0 +1,32 @@
+[
+ {
+  "table":"/AIF/ICD_SCENINF",
+  "nametab":
+  [
+   {
+    "NAME":"SCENARIO_ID",
+    "KEY":"X",
+    "TYPE":"C",
+    "LENGTH":20,
+    "DECIMALS":-1
+   },
+   {
+    "NAME":"INF_OBJ_NAME",
+    "KEY":"X",
+    "TYPE":"C",
+    "LENGTH":40,
+    "DECIMALS":-1
+   }
+  ],
+  "properties":
+  [
+   {
+    "CLIENTDEPENDENCY":"NO",
+    "DELIVERYCLASS":"W",
+    "TABART":"APPL2",
+    "TABFORM":"T",
+    "REFNAME":"-"
+   }
+  ]
+ }
+]
