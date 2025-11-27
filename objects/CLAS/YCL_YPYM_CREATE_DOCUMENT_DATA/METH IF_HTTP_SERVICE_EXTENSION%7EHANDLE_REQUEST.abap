@@ -83,6 +83,7 @@
       AND payment~companycode = @ms_request-companycode
       AND payment~paymentnumber IN @ms_request-paymentnumber
       AND payment~bankfilestatus IN @lr_bankfilestatus
+      AND payment~paymentrequestdate in @ms_request-paymentrequestdate
     INTO CORRESPONDING FIELDS OF TABLE @ms_response-items.
     IF sy-subrc = 0.
       SORT ms_response-items BY paymentnumber accountingdocument fiscalyear accountingdocumentitem.

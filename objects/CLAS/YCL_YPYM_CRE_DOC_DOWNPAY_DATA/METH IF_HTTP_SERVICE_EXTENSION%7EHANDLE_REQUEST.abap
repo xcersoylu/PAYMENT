@@ -45,6 +45,7 @@
       AND payment~companycode = @ms_request-companycode
       AND payment~paymentnumber IN @ms_request-paymentnumber
       AND payment~bankfilestatus in @lr_bankfilestatus
+      AND payment~paymentrequestdate in @ms_request-paymentrequestdate
     INTO CORRESPONDING FIELDS OF TABLE @ms_response-items.
     IF sy-subrc = 0.
       LOOP AT ms_response-items INTO DATA(ls_item) GROUP BY ( paymentnumber = ls_item-paymentnumber

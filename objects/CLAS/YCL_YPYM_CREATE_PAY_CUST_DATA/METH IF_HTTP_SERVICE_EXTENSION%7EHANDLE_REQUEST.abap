@@ -2,7 +2,14 @@
     DATA(lv_request_body) = request->get_text( ).
     DATA(lv_get_method) = request->get_method( ).
     /ui2/cl_json=>deserialize( EXPORTING json = lv_request_body CHANGING data = ms_request ).
-
+    LOOP AT ms_request-customer ASSIGNING FIELD-SYMBOL(<ls_customer>).
+      IF <ls_customer>-low IS NOT INITIAL.
+        <ls_customer>-low = |{ <ls_customer>-low ALPHA = IN }|.
+      ENDIF.
+      IF <ls_customer>-high IS NOT INITIAL.
+        <ls_customer>-high = |{ <ls_customer>-high ALPHA = IN }|.
+      ENDIF.
+    ENDLOOP.
     SELECT bsid~companycode,
            bsid~customer,
            I_customer~customername,
@@ -39,7 +46,8 @@
            bsid~businessarea,
            bsid~absoluteexchangerate,
            bsid~originalreferencedocument,
-           bsid~parkedbyuser
+           bsid~parkedbyuser,
+           bsid~documentreferenceid
       FROM yi_pym_ddl_bsid AS bsid
       INNER JOIN ypym_t_doctype AS doctype ON doctype~documenttype = bsid~accountingdocumenttype
       inner join I_customer on I_customer~customer = bsid~customer

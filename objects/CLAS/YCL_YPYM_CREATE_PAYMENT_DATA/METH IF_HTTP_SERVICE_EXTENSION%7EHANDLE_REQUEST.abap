@@ -2,7 +2,14 @@
     DATA(lv_request_body) = request->get_text( ).
     DATA(lv_get_method) = request->get_method( ).
     /ui2/cl_json=>deserialize( EXPORTING json = lv_request_body CHANGING data = ms_request ).
-
+    LOOP AT ms_request-supplier ASSIGNING FIELD-SYMBOL(<ls_supplier>).
+      IF <ls_supplier>-low IS NOT INITIAL.
+        <ls_supplier>-low = |{ <ls_supplier>-low ALPHA = IN }|.
+      ENDIF.
+      IF <ls_supplier>-high IS NOT INITIAL.
+        <ls_supplier>-high = |{ <ls_supplier>-high ALPHA = IN }|.
+      ENDIF.
+    ENDLOOP.
     SELECT bsik~companycode,
            bsik~supplier,
            i_supplier~suppliername,
@@ -66,8 +73,8 @@
           AND dats_add_days( bsik~duecalculationbasedate , CAST( CAST( bsik~cashdiscount1days AS CHAR( 5 ) ) AS INT4 ) ) IN @ms_request-invoiceduedate
           AND bsik~accountingdocumenttype IN @ms_request-documenttype
           AND bsik~postingdate IN @ms_request-postingdate
-          AND bsik~IsReversal = ''
-          and bsik~IsReversed = ''
+          AND bsik~isreversal = ''
+          AND bsik~isreversed = ''
         INTO CORRESPONDING FIELDS OF TABLE @ms_response-data.
 
 

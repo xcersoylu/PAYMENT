@@ -60,25 +60,24 @@
 
     LOOP AT mt_bank_file INTO DATA(ls_bank_file).
       lv_paymentamount = ls_bank_file-paymentamount. TRANSLATE lv_paymentamount  USING '.,'. SHIFT lv_paymentamount RIGHT DELETING TRAILING space. TRANSLATE lv_paymentamount USING ' 0'.
-      ls_detail = VALUE #(
-        kayit_tipi = |D|
-        kayit_numarasi = |{ lv_sira ALPHA = IN }|
-        islem_turu = |M01|
-        odeme_amac = |99|
-        odeme_tarihi = lv_system_date
-        alacak_banka_kodu = ls_bank_file-banknumber(4)
-        alacak_sube_kodu = ls_bank_file-banknumber+5(5)
-        alacak_hesap_no = COND #( WHEN ls_bank_file-iban <> space THEN ls_bank_file-iban ELSE ls_bank_file-bankaccount )
-        alacak_kredi_kart_no = space
-        tutar = lv_paymentamount
-*       musteri_adı = ls_bank_file-name1. "FIX_IT
-*       musteri_soyadi = ls_bank_file-name2. "FIX_IT
-         baba_adi = space
-         tckn_vkn = COND #( WHEN ls_bank_file-bptaxnumber <> space THEN ls_bank_file-bptaxnumber ELSE ls_bank_file-tckn )
- aciklama =  COND #( WHEN ls_bank_file-accountingdocument IS NOT INITIAL
-                                THEN |{ ls_bank_file-companycode }{ ls_bank_file-accountingdocument }{ ls_bank_file-accountingdocumetitem }{ ls_bank_file-fiscalyear }|
-                                WHEN ls_bank_file-purchaseorder IS NOT INITIAL THEN |{ ls_bank_file-companycode }{ ls_bank_file-purchaseorder }{ ls_bank_file-purchaseorderitem } |
-                                         ELSE |{ ls_bank_file-companycode }{ ls_bank_file-paymentnumber }{ ls_bank_file-paymentamount }{ ls_bank_file-purchaseorderitem } | )
+      ls_detail = VALUE #(  kayit_tipi = |D|
+                            kayit_numarasi = |{ lv_sira ALPHA = IN }|
+                            islem_turu = |M01|
+                            odeme_amac = |99|
+                            odeme_tarihi = lv_system_date
+                            alacak_banka_kodu = ls_bank_file-banknumber(4)
+                            alacak_sube_kodu = ls_bank_file-banknumber+5(5)
+                            alacak_hesap_no = COND #( WHEN ls_bank_file-iban <> space THEN ls_bank_file-iban ELSE ls_bank_file-bankaccount )
+                            alacak_kredi_kart_no = space
+                            tutar = lv_paymentamount
+*                           musteri_adı = ls_bank_file-name1. "FIX_IT
+*                           musteri_soyadi = ls_bank_file-name2. "FIX_IT
+                             baba_adi = space
+                             tckn_vkn = COND #( WHEN ls_bank_file-bptaxnumber <> space THEN ls_bank_file-bptaxnumber ELSE ls_bank_file-tckn )
+                            aciklama =  COND #( WHEN ls_bank_file-accountingdocument IS NOT INITIAL
+                                                    THEN |{ ls_bank_file-companycode }{ ls_bank_file-accountingdocument }{ ls_bank_file-accountingdocumetitem }{ ls_bank_file-fiscalyear }|
+                                                    WHEN ls_bank_file-purchaseorder IS NOT INITIAL THEN |{ ls_bank_file-companycode }{ ls_bank_file-purchaseorder }{ ls_bank_file-purchaseorderitem } |
+                                                             ELSE |{ ls_bank_file-companycode }{ ls_bank_file-paymentnumber }{ ls_bank_file-paymentamount }{ ls_bank_file-purchaseorderitem } | )
 
       ).
 

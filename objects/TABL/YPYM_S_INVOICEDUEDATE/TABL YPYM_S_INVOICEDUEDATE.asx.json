@@ -81,7 +81,7 @@
   [
    {
     "TABNAME":"YPYM_S_INVOICEDUEDATE",
-    "FIELDNAME":"HIH",
+    "FIELDNAME":"HIGH",
     "AS4LOCAL":"N",
     "AS4VERS":0,
     "POSITION":4,

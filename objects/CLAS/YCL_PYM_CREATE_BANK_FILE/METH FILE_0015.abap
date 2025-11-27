@@ -71,32 +71,33 @@
 *kalem
     LOOP AT mt_bank_file INTO DATA(ls_bank_file).
       lv_paymentamount = ls_bank_file-paymentamount. TRANSLATE lv_paymentamount  USING '.,'. SHIFT lv_paymentamount RIGHT DELETING TRAILING space. TRANSLATE lv_paymentamount USING ' 0'.
-      ls_detail = VALUE #(  kayit_tipi = |D|
-          odeme_tarihi = lv_system_date
-          alacakli_banka = ls_bank_file-banknumber(4)
-          alacakli_sube = ls_bank_file-banknumber+5(5)
-          alacakli_hesap = COND #( WHEN ls_bank_file-iban IS NOT INITIAL THEN ls_bank_file-iban ELSE ls_bank_file-bankaccount )
-          miktar = lv_paymentamount
-          doviz_cinsi = COND #( WHEN ls_bank_file-transactioncurrency EQ 'TRY' THEN 'TL' ELSE ls_bank_file-transactioncurrency )
-          aciklama = COND #( WHEN ls_bank_file-receiptexplanation IS NOT INITIAL THEN ls_bank_file-receiptexplanation ELSE |TOS-Havale| )
-          alacakli_ad_soyad = COND #( WHEN ls_bank_file-suppliername IS INITIAL THEN ls_bank_file-customername ELSE ls_bank_file-suppliername )
-          alacakli_adresi = space
-          alacakli_tel = space
-          alacakli_vkn_tckn = COND #( WHEN ls_bank_file-bptaxnumber <> space THEN ls_bank_file-bptaxnumber ELSE ls_bank_file-tckn )
-          alacakli_vergi_dairesi = space
-          alacakli_musteri_no = COND #( WHEN ls_bank_file-supplier IS INITIAL THEN ls_bank_file-customer ELSE ls_bank_file-supplier )
-          alacakli_baba_adi = space
-          alacakli_email = space
-          referans = ls_bank_file-documentreferenceid
-               parametre =  COND #( WHEN ls_bank_file-accountingdocument IS NOT INITIAL
-                                    THEN |{ ls_bank_file-companycode }{ ls_bank_file-accountingdocument }{ ls_bank_file-accountingdocumetitem }{ ls_bank_file-fiscalyear }|
-                                    WHEN ls_bank_file-purchaseorder IS NOT INITIAL THEN |{ ls_bank_file-companycode }{ ls_bank_file-purchaseorder }{ ls_bank_file-purchaseorderitem } |
-                                             ELSE |{ ls_bank_file-companycode }{ ls_bank_file-paymentnumber }{ ls_bank_file-paymentamount }{ ls_bank_file-purchaseorderitem } | )
-          islem_kodu = |00|
-          revize_alan1 = space
-          revize_alan2 = space
-          durum_kodu = space
-          eft_sorgu_no = space
+      clear ls_Detail.
+      ls_detail = VALUE #( kayit_tipi = |D|
+                           odeme_tarihi = lv_system_date
+                           alacakli_banka = ls_bank_file-banknumber(4)
+                           alacakli_sube = ls_bank_file-banknumber+5(5)
+                           alacakli_hesap = COND #( WHEN ls_bank_file-iban IS NOT INITIAL THEN ls_bank_file-iban ELSE ls_bank_file-bankaccount )
+                           miktar = lv_paymentamount
+                           doviz_cinsi = COND #( WHEN ls_bank_file-transactioncurrency EQ 'TRY' THEN 'TL' ELSE ls_bank_file-transactioncurrency )
+                           aciklama = COND #( WHEN ls_bank_file-receiptexplanation IS NOT INITIAL THEN ls_bank_file-receiptexplanation ELSE |TOS-Havale| )
+                           alacakli_ad_soyad = COND #( WHEN ls_bank_file-suppliername IS INITIAL THEN ls_bank_file-customername ELSE ls_bank_file-suppliername )
+                           alacakli_adresi = space
+                           alacakli_tel = space
+                           alacakli_vkn_tckn = COND #( WHEN ls_bank_file-bptaxnumber <> space THEN ls_bank_file-bptaxnumber ELSE ls_bank_file-tckn )
+                           alacakli_vergi_dairesi = space
+                           alacakli_musteri_no = COND #( WHEN ls_bank_file-supplier IS INITIAL THEN ls_bank_file-customer ELSE ls_bank_file-supplier )
+                           alacakli_baba_adi = space
+                           alacakli_email = space
+                           referans = ls_bank_file-documentreferenceid
+                           parametre =  COND #( WHEN ls_bank_file-accountingdocument IS NOT INITIAL
+                                                    THEN |{ ls_bank_file-companycode }{ ls_bank_file-accountingdocument }{ ls_bank_file-accountingdocumetitem }{ ls_bank_file-fiscalyear }|
+                                                    WHEN ls_bank_file-purchaseorder IS NOT INITIAL THEN |{ ls_bank_file-companycode }{ ls_bank_file-purchaseorder }{ ls_bank_file-purchaseorderitem } |
+                                                             ELSE |{ ls_bank_file-companycode }{ ls_bank_file-paymentnumber }{ ls_bank_file-paymentamount }{ ls_bank_file-purchaseorderitem } | )
+                           islem_kodu = |00|
+                           revize_alan1 = space
+                           revize_alan2 = space
+                           durum_kodu = space
+                           eft_sorgu_no = space
       ).
 
       CLEAR: ls_line.

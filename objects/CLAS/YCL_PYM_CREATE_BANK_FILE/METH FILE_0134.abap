@@ -45,8 +45,7 @@
           ls_footer            TYPE ty_footer,
           lv_paymentamount(18).
 
-*-&Escape sequence variables->
-    CONSTANTS: lc_cr_lf   TYPE c VALUE cl_abap_char_utilities=>cr_lf,
+    CONSTANTS: lc_cr_lf   TYPE c length 2 VALUE cl_abap_char_utilities=>cr_lf,
                lc_newline TYPE c VALUE cl_abap_char_utilities=>newline.
 
     DATA(lv_system_date) = cl_abap_context_info=>get_system_date(  ).
@@ -66,6 +65,7 @@
 *kalemler
     LOOP AT mt_bank_file INTO DATA(ls_bank_file).
       lv_paymentamount = ls_bank_file-paymentamount. TRANSLATE lv_paymentamount  USING '.,'. SHIFT lv_paymentamount RIGHT DELETING TRAILING space. TRANSLATE lv_paymentamount USING ' 0'.
+      clear ls_Detail.
       ls_detail = VALUE #( kayit_tipi = |D|
                           banka_kodu = ls_bank_file-companybankinternalid(4)
                           sube_kodu = ls_bank_file-companybankinternalid+5(5)
@@ -129,9 +129,10 @@
     ENDLOOP.
 **********************************************************************
 *Foooter
+    clear ls_Footer.
     ls_footer = VALUE #( kayit_tipi = |T|
                          tpl_kayit = CONV numc5( |{ |{ lines( mt_bank_file ) }| ALPHA = IN }| ) ).
-
+    clear ls_line.
     REPLACE SECTION OFFSET 0 LENGTH 1 OF ls_line WITH ls_footer-kayit_tipi."*-&Kayıt Tipi
     REPLACE SECTION OFFSET 1 LENGTH 5 OF ls_line WITH ls_footer-tpl_kayit."*-&Toplam Kayıt Sayısı
     APPEND INITIAL LINE TO rt_bank_file ASSIGNING <ls_bank_file>.

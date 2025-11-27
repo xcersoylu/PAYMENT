@@ -4,10 +4,10 @@
   "data":
   [
    {
-    "TYPENAME":"YPYM_TT_CREATE_PAY_CUS_DATA",
+    "TYPENAME":"YPYM_TT_PAYMENTREQUESTDATE",
     "AS4LOCAL":"N",
     "ACTFLAG":"",
-    "ROWTYPE":"YPYM_S_CREATE_PAY_CUS_DATA",
+    "ROWTYPE":"YPYM_S_PAYMENTREQUESTDATE",
     "ROWKIND":"S",
     "DATATYPE":"STRU",
     "LENG":0,
@@ -17,7 +17,7 @@
     "KEYKIND":"N",
     "KEYFDCOUNT":0,
     "GENERIC":"",
-    "TYPELEN":1482,
+    "TYPELEN":38,
     "AS4USER":"SAP_CUSTOMER",
     "AS4DATE":"0000-00-00",
     "AS4TIME":"00:00:00",
@@ -37,10 +37,10 @@
   "data":
   [
    {
-    "TYPENAME":"YPYM_TT_CREATE_PAY_CUS_DATA",
+    "TYPENAME":"YPYM_TT_PAYMENTREQUESTDATE",
     "DDLANGUAGE":"T",
     "AS4LOCAL":"N",
-    "DDTEXT":"Müşteri Ödeme Listesi Ekran Verisi"
+    "DDTEXT":"Ödeme Talep Tarihi"
    }
   ]
  },
@@ -49,7 +49,7 @@
   "data":
   [
    {
-    "TYPENAME":"YPYM_TT_CREATE_PAY_CUS_DATA",
+    "TYPENAME":"YPYM_TT_PAYMENTREQUESTDATE",
     "STATE":"N",
     "TYPEKIND":"TTYP"
    }
@@ -62,7 +62,7 @@
    {
     "PGMID":"R3TR",
     "OBJECT":"TTYP",
-    "OBJ_NAME":"YPYM_TT_CREATE_PAY_CUS_DATA",
+    "OBJ_NAME":"YPYM_TT_PAYMENTREQUESTDATE",
     "KORRNUM":"",
     "SRCSYSTEM":"...",
     "AUTHOR":"SAP_CUSTOMER",
@@ -79,8 +79,8 @@
     "CRELEASE":"",
     "DELFLAG":"",
     "TRANSLTTXT":"",
-    "CREATED_ON":"2024-09-11",
-    "CHECK_DATE":"2024-09-11",
+    "CREATED_ON":"2025-11-25",
+    "CHECK_DATE":"2025-11-25",
     "CHECK_CFG":""
    }
   ]
