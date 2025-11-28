@@ -12,7 +12,6 @@
                                                     AND companybankcode = ls_header-companybankcode
                                                     AND companyaccountcode = ls_header-companyaccountcode
                                                     AND transactioncurrency = ls_header-currency.
-        CLEAR lt_bank_file.
         APPEND VALUE #( paymentnumber         = ls_item-paymentnumber
                         paymentdate           = ls_item-paymentdate
                         supplier              = ls_item-supplier
