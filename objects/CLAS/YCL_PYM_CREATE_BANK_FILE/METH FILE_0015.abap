@@ -71,7 +71,7 @@
 *kalem
     LOOP AT mt_bank_file INTO DATA(ls_bank_file).
       lv_paymentamount = ls_bank_file-paymentamount. TRANSLATE lv_paymentamount  USING '.,'. SHIFT lv_paymentamount RIGHT DELETING TRAILING space. TRANSLATE lv_paymentamount USING ' 0'.
-      clear ls_Detail.
+      CLEAR ls_detail.
       ls_detail = VALUE #( kayit_tipi = |D|
                            odeme_tarihi = lv_system_date
                            alacakli_banka = ls_bank_file-banknumber(4)

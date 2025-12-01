@@ -62,7 +62,7 @@
              bpbank~iban           AS supplieriban,
              bpbank~swiftcode      AS supplierswiftcode,
              bpbank~bankname       AS supplierbankname,
-             bank~bankbranch       AS supplierbankbrunch
+             bank~bankbranch       AS supplierbankbranch
       FROM @lt_supplier AS bsik
       INNER JOIN i_businesspartnerbank AS bpbank ON bpbank~businesspartner = bsik~supplier
       INNER JOIN i_bank_2 AS bank ON bank~bankcountry = bpbank~bankcountrykey
@@ -79,7 +79,7 @@
             <ls_data>-supplieriban           = ls_supplier_bank-supplieriban.
             <ls_data>-supplierswiftcode      = ls_supplier_bank-supplierswiftcode.
             <ls_data>-supplierbankname       = ls_supplier_bank-supplierbankname.
-            <ls_data>-supplierbankbrunch     = ls_supplier_bank-supplierbankbrunch.
+            <ls_data>-supplierbankbranch     = ls_supplier_bank-supplierbankbranch.
           ENDIF.
         ENDLOOP.
       ENDIF.

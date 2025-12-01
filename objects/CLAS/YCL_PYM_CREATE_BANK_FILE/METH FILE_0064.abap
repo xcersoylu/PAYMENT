@@ -122,10 +122,10 @@
     ENDLOOP.
 **********************************************************************
 *Foooter
-    clear ls_Footer.
+    CLEAR ls_footer.
     ls_footer = VALUE #( kayit_tipi = |T|
                          tpl_kayit = CONV numc5( |{ |{ lines( mt_bank_file ) }| ALPHA = IN }| ) ).
-    clear ls_line.
+    CLEAR ls_line.
     REPLACE SECTION OFFSET 0 LENGTH 1 OF ls_line WITH ls_footer-kayit_tipi."*-&Kayıt Tipi
     REPLACE SECTION OFFSET 1 LENGTH 5 OF ls_line WITH ls_footer-tpl_kayit."*-&Toplam Kayıt Sayısı
     APPEND INITIAL LINE TO rt_bank_file ASSIGNING <ls_bank_file>.

@@ -26,4 +26,9 @@
             WHERE companycode = @ms_urfcode-companycode AND housebank = @ms_urfcode-bankshortid
               INTO @rv_filename.
     ENDCASE.
+    IF rv_filename IS INITIAL.
+      rv_filename = |{ lv_datum }{ lv_time }|.
+    ELSEIF rv_filename(4) = '0010'.
+      rv_filename = |{ lv_datum }{ lv_time }_{ ms_urfcode-firm_code }|.
+    ENDIF.
   ENDMETHOD.

@@ -31,7 +31,20 @@
           payment~paymentrequestdate,
           payment~bankfilestatus,
           payment~paymentstatus,
-          paymenttext~text AS paymentstatustext
+          paymenttext~text AS paymentstatustext,
+          CASE WHEN substring( payment~companybankinternalid,1,4 ) = '0062'
+                    THEN CASE WHEN ekko~documentcurrency = 'TRY'
+                              THEN 'HAVALE/EFT'
+                              ELSE CASE WHEN substring( bpbank~banknumber,1,4 ) = substring( payment~companybankinternalid,1,4 )
+                                        THEN 'HAVALE'
+                                        ELSE 'EFT'
+                                    END
+                           END
+                    ELSE 'HAVALE/EFT' END AS transfer_type,
+          payment~paymentdocument,
+          payment~paymentdocumentyear,
+          payment~clearingdocument,
+          payment~clearingdocumentyear
     FROM ypym_t_downpay AS payment INNER JOIN I_PurchaseOrderAPI01 AS ekko ON ekko~purchaseorder = payment~purchaseorder
     left outer JOIN i_supplier ON i_supplier~supplier = ekko~supplier
     left outer JOIN i_businesspartnerbank AS bpbank ON bpbank~businesspartner = ekko~supplier

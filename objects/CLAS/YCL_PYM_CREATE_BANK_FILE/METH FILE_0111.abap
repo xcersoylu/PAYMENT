@@ -26,7 +26,7 @@
     LOOP AT mt_bank_file INTO DATA(ls_bank_file).
       lv_paymentamount = ls_bank_file-paymentamount.
       SHIFT lv_paymentamount RIGHT DELETING TRAILING space. TRANSLATE ls_detail-tutar USING ' 0'.
-      clear ls_Detail.
+      CLEAR ls_detail.
       ls_detail = VALUE #( kb_kodu        = ls_bank_file-banknumber
                          kb_sube_kodu     = ls_bank_file-bankbranch
                          kb_hesap_no      = ls_bank_file-bankaccount

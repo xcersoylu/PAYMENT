@@ -102,6 +102,9 @@
         ELSE. "txt indir
           DATA(lv_xstring) = cl_abap_conv_codepage=>create_out( )->convert( EXPORTING source = ls_txt_file ).
           ms_response-txt_base64 = cl_web_http_utility=>encode_x_base64( lv_xstring ).
+          ms_response-filename = lo_bank->generate_filename( iv_transfer_type = ls_item-transfer_type
+                                                             iv_lc_fc         = COND #( WHEN ls_item-transactioncurrency = 'TRY'
+                                                                                        THEN 'LC' ELSE 'FC' ) ).
         ENDIF.
       ENDIF.
       CLEAR : ls_http_status , lt_messages , lt_txt_file , lt_bank_file , lv_methodname.
