@@ -6,13 +6,23 @@
     /ui2/cl_json=>deserialize( EXPORTING json = lv_request_body CHANGING data = ms_request ).
 
     lt_payment = CORRESPONDING #(  ms_request-paymentlist ).
+
+    LOOP AT ms_request-paymentlist INTO DATA(ls_paymentlist) WHERE supplieriban IS INITIAL.
+      EXIT.
+    ENDLOOP.
+    IF sy-subrc = 0.
+      MESSAGE ID 'YPYM_MESSAGES' TYPE 'E' NUMBER 015 INTO DATA(lv_message).
+      ms_response-messages = VALUE #( (  messagetype = 'E' message = lv_message ) ).
+    ENDIF.
+
     DATA(lt_approvers) = ycl_pym_approvement=>get_all_approvers( EXPORTING
                                                               iv_companycode   = ms_request-companycode
                                                              iv_approvergroup = ms_request-approvergroup ).
     IF lt_approvers IS INITIAL.
-      MESSAGE ID 'YPYM_MESSAGES' TYPE 'E' NUMBER 006 INTO DATA(lv_message).
+      MESSAGE ID 'YPYM_MESSAGES' TYPE 'E' NUMBER 006 INTO lv_message.
       ms_response-messages = VALUE #( (  messagetype = 'E' message = lv_message ) ).
-    ELSE.
+    ENDIF.
+    IF ms_response-messages IS INITIAL.
       TRY.
           cl_numberrange_runtime=>number_get(
             EXPORTING

@@ -12,7 +12,7 @@
     ENDLOOP.
     SELECT bsid~companycode,
            bsid~customer,
-           I_customer~customername,
+           i_customer~customername,
            bsid~specialgltransactiontype,
            bsid~specialglcode,
            bsid~clearingdate,
@@ -38,6 +38,7 @@
            bsid~absltamtinadditionalcurrency2,
            bsid~additionalcurrency2,
            bsid~absoluteamountintransaccrcy AS paymentamount,
+           bsid~transactioncurrency AS currency,
            bsid~documentitemtext,
            bsid~paymentmethod,
            bsid~purchasingdocument,
@@ -50,7 +51,7 @@
            bsid~documentreferenceid
       FROM yi_pym_ddl_bsid AS bsid
       INNER JOIN ypym_t_doctype AS doctype ON doctype~documenttype = bsid~accountingdocumenttype
-      inner join I_customer on I_customer~customer = bsid~customer
+      INNER JOIN i_customer ON i_customer~customer = bsid~customer
         LEFT OUTER JOIN i_companycode AS t001 ON t001~companycode = bsid~companycode
         WHERE NOT EXISTS ( SELECT * FROM ypym_t_pay_cus WHERE accountingdocument = bsid~accountingdocument
                                                           AND fiscalyear = bsid~fiscalyear
@@ -62,12 +63,13 @@
           AND bsid~customer IN @ms_request-customer
           AND bsid~paymentblockingreason IN @ms_request-paymentblockingreason
           AND bsid~transactioncurrency IN @ms_request-currency
-          AND bsid~SpecialGLCode in @ms_request-specialglcode
-          AND dats_add_days( bsid~duecalculationbasedate , CAST( CAST( bsid~cashdiscount1days AS CHAR( 5 ) ) AS INT4 ) ) in @ms_request-invoiceduedate
-          AND bsid~AccountingDocumentType in @ms_request-documenttype
-          AND bsid~PostingDate in @ms_request-postingdate
-          AND bsid~IsReversal = ''
-          and bsid~IsReversed = ''
+          AND bsid~specialglcode IN @ms_request-specialglcode
+          AND dats_add_days( bsid~duecalculationbasedate , CAST( CAST( bsid~cashdiscount1days AS CHAR( 5 ) ) AS INT4 ) ) IN @ms_request-invoiceduedate
+          AND bsid~accountingdocumenttype IN @ms_request-documenttype
+          AND bsid~postingdate IN @ms_request-postingdate
+          AND bsid~isreversal = ''
+          AND bsid~isreversed = ''
+          AND bsid~debitcreditcode = 'H'
         INTO CORRESPONDING FIELDS OF TABLE @ms_response-data.
 
 

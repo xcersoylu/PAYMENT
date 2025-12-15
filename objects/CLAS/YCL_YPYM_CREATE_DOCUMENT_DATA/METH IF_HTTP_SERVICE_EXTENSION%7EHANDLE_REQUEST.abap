@@ -19,6 +19,7 @@
           bsik~absoluteamountintransaccrcy,
           bsik~transactioncurrency,
           payment~paymentamount,
+          payment~currency,
           bsik~absltamtinadditionalcurrency1,
           bsik~additionalcurrency1,
           bsik~absltamtinadditionalcurrency2,
@@ -94,7 +95,7 @@
                                                       paymentdate        = ls_item-paymentdate
                                                       companycode        = ls_item-companycode
                                                       paymentamount      = ls_item-paymentamount
-                                                      currency           = ls_item-transactioncurrency
+                                                      currency           = ls_item-currency
                                                       companybankcode    = ls_item-companybankcode
                                                       companyaccountcode = ls_item-companyaccountcode
                                                       paymentrequestdate = ls_item-paymentrequestdate

@@ -38,6 +38,7 @@
            bsik~absltamtinadditionalcurrency2,
            bsik~additionalcurrency2,
            bsik~absoluteamountintransaccrcy AS paymentamount,
+           bsik~transactioncurrency AS currency,
            bsik~documentitemtext,
            bsik~paymentmethod,
            bsik~purchasingdocument,
@@ -75,6 +76,7 @@
           AND bsik~postingdate IN @ms_request-postingdate
           AND bsik~isreversal = ''
           AND bsik~isreversed = ''
+          AND bsik~debitcreditcode = 'H'
         INTO CORRESPONDING FIELDS OF TABLE @ms_response-data.
 
 

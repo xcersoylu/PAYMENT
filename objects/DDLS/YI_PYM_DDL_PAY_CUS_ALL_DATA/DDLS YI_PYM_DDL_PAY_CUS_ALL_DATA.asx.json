@@ -9,10 +9,10 @@
     "AS4USER":"SAP_CUSTOMER",
     "AS4DATE":"0000-00-00",
     "AS4TIME":"00:00:00",
-    "SOURCE":"@AbapCatalog.viewEnhancementCategory: [#NONE]\r\n@AccessControl.authorizationCheck: #NOT_REQUIRED\r\n@EndUserText.label: 'Ödeme Listesi Verisi'\r\n@Metadata.ignorePropagatedAnnotations: true\r\n@ObjectModel.usageType:{\r\n    serviceQuality: #X,\r\n    sizeCategory: #S,\r\n    dataClass: #MIXED\r\n}\r\ndefine view entity YI_PYM_DDL_PAY_cus_ALL_DATA\r\n  as select from ypym_t_pay_cus as payment inner join I_Customer on I_Customer.Customer = payment.customer\r\n{\r\n  key payment.paymentnumber               as PaymentNumber,\r\n  key payment.accountingdocument          as AccountingDocument,\r\n  key payment.fiscalyear                  as FiscalYear,\r\n  key payment.accountingdocumentitem      as AccountingDocumentItem,\r\n      @EndUserText.label: 'Liste Tarihi'\r\n      payment.createdate                  as Listdate,\r\n//      payment.paymentdate                 as PaymentDate,\r\n      payment.customer                    as Customer,\r\n      I_Customer.CustomerName             as CustomerName,\r\n      payment.companycode                 as CompanyCode,\r\n      payment.documentdate                as DocumentDate,\r\n      @Semantics.amount.currencyCode: 'TransactionCurrency'\r\n      payment.amountintransactioncurrency as AmountInTransactionCurrency,\r\n      payment.transactioncurrency         as TransactionCurrency,\r\n      @Semantics.amount.currencyCode: 'CompanyCodeCurrency'\r\n      payment.amountincompanycodecurrency as AmountInCompanyCodeCurrency,\r\n      payment.companycodecurrency         as CompanyCodeCurrency,\r\n      @Semantics.amount.currencyCode: 'AdditionalCurrency1'\r\n      payment.amountinadditionalcurrency1 as AmountInAdditionalCurrency1,\r\n      payment.additionalcurrency1         as AdditionalCurrency1,\r\n      @Semantics.amount.currencyCode: 'AdditionalCurrency2'\r\n      payment.amountinadditionalcurrency2 as AmountInAdditionalCurrency2,\r\n      payment.additionalcurrency2         as AdditionalCurrency2,\r\n      @Semantics.amount.currencyCode: 'Currency'\r\n      payment.paymentamount               as PaymentAmount,\r\n      payment.currency                    as Currency,\r\n      payment.paymentexplanation          as PaymentExplanation,\r\n      payment.receiptexplanation          as ReceiptExplanation,\r\n      payment.customeriban                as Iban,\r\n      payment.companybankcode             as BankCode,\r\n      payment.companyaccountcode          as AccountCode,\r\n      payment.paymentblockingreason       as PaymentClockingReason\r\n      \r\n}\r\n/*+[internal] {\n\"BASEINFO\":\n{\n\"FROM\":\n[\n\"I_CUSTOMER\",\n\"YPYM_T_PAY_CUS\"\n],\n\"ASSOCIATED\":\n[],\n\"BASE\":\n[],\n\"ANNO_REF\":\n[],\n\"SCALAR_FUNCTION\":\n[],\n\"VERSION\":0,\n\"ANNOREF_EVALUATION_ERROR\":\"\"\n}\n}*/",
+    "SOURCE":"@AbapCatalog.viewEnhancementCategory: [#NONE]\r\n@AccessControl.authorizationCheck: #NOT_REQUIRED\r\n@EndUserText.label: 'Ödeme Listesi Verisi'\r\n@Metadata.ignorePropagatedAnnotations: true\r\n@ObjectModel.usageType:{\r\n    serviceQuality: #X,\r\n    sizeCategory: #S,\r\n    dataClass: #MIXED\r\n}\r\ndefine view entity YI_PYM_DDL_PAY_cus_ALL_DATA\r\n  as select from ypym_t_pay_cus as payment inner join I_Customer on I_Customer.Customer = payment.customer\r\n{\r\n  key payment.paymentnumber               as PaymentNumber,\r\n  key payment.accountingdocument          as AccountingDocument,\r\n  key payment.fiscalyear                  as FiscalYear,\r\n  key payment.accountingdocumentitem      as AccountingDocumentItem,\r\n      @EndUserText.label: 'Liste Tarihi'\r\n      payment.createdate                  as Listdate,\r\n//      payment.paymentdate                 as PaymentDate,\r\n      payment.customer                    as Customer,\r\n      I_Customer.CustomerName             as CustomerName,\r\n      payment.companycode                 as CompanyCode,\r\n      payment.documentdate                as DocumentDate,\r\n      @Semantics.amount.currencyCode: 'TransactionCurrency'\r\n      @EndUserText.label: 'İşlem PB Cinsinden Tutar'\r\n      payment.amountintransactioncurrency as AmountInTransactionCurrency,\r\n      @EndUserText.label: 'İşlem PB'\r\n      payment.transactioncurrency         as TransactionCurrency,\r\n      @Semantics.amount.currencyCode: 'CompanyCodeCurrency'\r\n      @EndUserText.label: 'Şirket Kodu PB Cinsinden Tutar'\r\n      payment.amountincompanycodecurrency as AmountInCompanyCodeCurrency,\r\n      @EndUserText.label: 'Şirket Kodu PB'\r\n      payment.companycodecurrency         as CompanyCodeCurrency,\r\n      @Semantics.amount.currencyCode: 'AdditionalCurrency1'\r\n      @UI.hidden: true\r\n      payment.amountinadditionalcurrency1 as AmountInAdditionalCurrency1,\r\n      @UI.hidden: true\r\n      payment.additionalcurrency1         as AdditionalCurrency1,\r\n      @Semantics.amount.currencyCode: 'AdditionalCurrency2'\r\n      @UI.hidden: true\r\n      payment.amountinadditionalcurrency2 as AmountInAdditionalCurrency2,\r\n      @UI.hidden: true\r\n      payment.additionalcurrency2         as AdditionalCurrency2,\r\n      @Semantics.amount.currencyCode: 'Currency'\r\n      payment.paymentamount               as PaymentAmount,\r\n      @EndUserText.label: 'Ödeme Tutarı PB'\r\n      payment.currency                    as Currency,\r\n      payment.paymentexplanation          as PaymentExplanation,\r\n      payment.receiptexplanation          as ReceiptExplanation,\r\n      payment.customeriban                as Iban,\r\n      payment.companybankcode             as BankCode,\r\n      payment.companyaccountcode          as AccountCode,\r\n      payment.paymentblockingreason       as PaymentClockingReason\r\n      \r\n}\r\n/*+[internal] {\n\"BASEINFO\":\n{\n\"FROM\":\n[\n\"I_CUSTOMER\",\n\"YPYM_T_PAY_CUS\"\n],\n\"ASSOCIATED\":\n[],\n\"BASE\":\n[],\n\"ANNO_REF\":\n[],\n\"SCALAR_FUNCTION\":\n[],\n\"VERSION\":0,\n\"ANNOREF_EVALUATION_ERROR\":\"\"\n}\n}*/",
     "PARENTNAME":"",
     "ACTFLAG":"",
-    "CHGFLAG":"53",
+    "CHGFLAG":"",
     "SOURCE_TYPE":"W",
     "SOURCE_ORIGIN":"0",
     "ABAP_LANGUAGE_VERSION":"5"
@@ -61,10 +61,70 @@
     "NODENAME":".NODE1",
     "DDLANGUAGE":"T",
     "AS4LOCAL":"N",
+    "FIELDNAME":"AMOUNTINCOMPANYCODECURRENCY",
+    "DEPTH":0,
+    "DDTEXT":"",
+    "FIELDLABEL":"Şirket Kodu PB Cinsinden Tutar",
+    "QUICKINFO":""
+   },
+   {
+    "DDLNAME":"YI_PYM_DDL_PAY_CUS_ALL_DATA",
+    "STRUCOBJN":"YI_PYM_DDL_PAY_CUS_ALL_DATA",
+    "NODENAME":".NODE1",
+    "DDLANGUAGE":"T",
+    "AS4LOCAL":"N",
+    "FIELDNAME":"AMOUNTINTRANSACTIONCURRENCY",
+    "DEPTH":0,
+    "DDTEXT":"",
+    "FIELDLABEL":"İşlem PB Cinsinden Tutar",
+    "QUICKINFO":""
+   },
+   {
+    "DDLNAME":"YI_PYM_DDL_PAY_CUS_ALL_DATA",
+    "STRUCOBJN":"YI_PYM_DDL_PAY_CUS_ALL_DATA",
+    "NODENAME":".NODE1",
+    "DDLANGUAGE":"T",
+    "AS4LOCAL":"N",
+    "FIELDNAME":"COMPANYCODECURRENCY",
+    "DEPTH":0,
+    "DDTEXT":"",
+    "FIELDLABEL":"Şirket Kodu PB",
+    "QUICKINFO":""
+   },
+   {
+    "DDLNAME":"YI_PYM_DDL_PAY_CUS_ALL_DATA",
+    "STRUCOBJN":"YI_PYM_DDL_PAY_CUS_ALL_DATA",
+    "NODENAME":".NODE1",
+    "DDLANGUAGE":"T",
+    "AS4LOCAL":"N",
+    "FIELDNAME":"CURRENCY",
+    "DEPTH":0,
+    "DDTEXT":"",
+    "FIELDLABEL":"Ödeme Tutarı PB",
+    "QUICKINFO":""
+   },
+   {
+    "DDLNAME":"YI_PYM_DDL_PAY_CUS_ALL_DATA",
+    "STRUCOBJN":"YI_PYM_DDL_PAY_CUS_ALL_DATA",
+    "NODENAME":".NODE1",
+    "DDLANGUAGE":"T",
+    "AS4LOCAL":"N",
     "FIELDNAME":"LISTDATE",
     "DEPTH":0,
     "DDTEXT":"",
     "FIELDLABEL":"Liste Tarihi",
+    "QUICKINFO":""
+   },
+   {
+    "DDLNAME":"YI_PYM_DDL_PAY_CUS_ALL_DATA",
+    "STRUCOBJN":"YI_PYM_DDL_PAY_CUS_ALL_DATA",
+    "NODENAME":".NODE1",
+    "DDLANGUAGE":"T",
+    "AS4LOCAL":"N",
+    "FIELDNAME":"TRANSACTIONCURRENCY",
+    "DEPTH":0,
+    "DDTEXT":"",
+    "FIELDLABEL":"İşlem PB",
     "QUICKINFO":""
    }
   ]
@@ -87,45 +147,129 @@
   [
    {
     "STRUCOBJN":"YI_PYM_DDL_PAY_CUS_ALL_DATA",
+    "LFIELDNAME":"ADDITIONALCURRENCY1",
+    "NAME":"UI",
+    "POSITION":21,
+    "VALUE":""
+   },
+   {
+    "STRUCOBJN":"YI_PYM_DDL_PAY_CUS_ALL_DATA",
+    "LFIELDNAME":"ADDITIONALCURRENCY1",
+    "NAME":"UI.HIDDEN",
+    "POSITION":22,
+    "VALUE":"true"
+   },
+   {
+    "STRUCOBJN":"YI_PYM_DDL_PAY_CUS_ALL_DATA",
+    "LFIELDNAME":"ADDITIONALCURRENCY2",
+    "NAME":"UI",
+    "POSITION":27,
+    "VALUE":""
+   },
+   {
+    "STRUCOBJN":"YI_PYM_DDL_PAY_CUS_ALL_DATA",
+    "LFIELDNAME":"ADDITIONALCURRENCY2",
+    "NAME":"UI.HIDDEN",
+    "POSITION":28,
+    "VALUE":"true"
+   },
+   {
+    "STRUCOBJN":"YI_PYM_DDL_PAY_CUS_ALL_DATA",
     "LFIELDNAME":"AMOUNTINADDITIONALCURRENCY1",
     "NAME":"SEMANTICS",
-    "POSITION":9,
+    "POSITION":17,
     "VALUE":""
    },
    {
     "STRUCOBJN":"YI_PYM_DDL_PAY_CUS_ALL_DATA",
     "LFIELDNAME":"AMOUNTINADDITIONALCURRENCY1",
     "NAME":"SEMANTICS.AMOUNT.CURRENCYCODE",
-    "POSITION":10,
+    "POSITION":18,
     "VALUE":"'AdditionalCurrency1'"
    },
    {
     "STRUCOBJN":"YI_PYM_DDL_PAY_CUS_ALL_DATA",
+    "LFIELDNAME":"AMOUNTINADDITIONALCURRENCY1",
+    "NAME":"UI",
+    "POSITION":19,
+    "VALUE":""
+   },
+   {
+    "STRUCOBJN":"YI_PYM_DDL_PAY_CUS_ALL_DATA",
+    "LFIELDNAME":"AMOUNTINADDITIONALCURRENCY1",
+    "NAME":"UI.HIDDEN",
+    "POSITION":20,
+    "VALUE":"true"
+   },
+   {
+    "STRUCOBJN":"YI_PYM_DDL_PAY_CUS_ALL_DATA",
     "LFIELDNAME":"AMOUNTINADDITIONALCURRENCY2",
+    "NAME":"SEMANTICS",
+    "POSITION":23,
+    "VALUE":""
+   },
+   {
+    "STRUCOBJN":"YI_PYM_DDL_PAY_CUS_ALL_DATA",
+    "LFIELDNAME":"AMOUNTINADDITIONALCURRENCY2",
+    "NAME":"SEMANTICS.AMOUNT.CURRENCYCODE",
+    "POSITION":24,
+    "VALUE":"'AdditionalCurrency2'"
+   },
+   {
+    "STRUCOBJN":"YI_PYM_DDL_PAY_CUS_ALL_DATA",
+    "LFIELDNAME":"AMOUNTINADDITIONALCURRENCY2",
+    "NAME":"UI",
+    "POSITION":25,
+    "VALUE":""
+   },
+   {
+    "STRUCOBJN":"YI_PYM_DDL_PAY_CUS_ALL_DATA",
+    "LFIELDNAME":"AMOUNTINADDITIONALCURRENCY2",
+    "NAME":"UI.HIDDEN",
+    "POSITION":26,
+    "VALUE":"true"
+   },
+   {
+    "STRUCOBJN":"YI_PYM_DDL_PAY_CUS_ALL_DATA",
+    "LFIELDNAME":"AMOUNTINCOMPANYCODECURRENCY",
+    "NAME":"ENDUSERTEXT",
+    "POSITION":13,
+    "VALUE":""
+   },
+   {
+    "STRUCOBJN":"YI_PYM_DDL_PAY_CUS_ALL_DATA",
+    "LFIELDNAME":"AMOUNTINCOMPANYCODECURRENCY",
+    "NAME":"ENDUSERTEXT.LABEL",
+    "POSITION":14,
+    "VALUE":"'Şirket Kodu PB Cinsinden Tutar'"
+   },
+   {
+    "STRUCOBJN":"YI_PYM_DDL_PAY_CUS_ALL_DATA",
+    "LFIELDNAME":"AMOUNTINCOMPANYCODECURRENCY",
     "NAME":"SEMANTICS",
     "POSITION":11,
     "VALUE":""
    },
    {
     "STRUCOBJN":"YI_PYM_DDL_PAY_CUS_ALL_DATA",
-    "LFIELDNAME":"AMOUNTINADDITIONALCURRENCY2",
+    "LFIELDNAME":"AMOUNTINCOMPANYCODECURRENCY",
     "NAME":"SEMANTICS.AMOUNT.CURRENCYCODE",
     "POSITION":12,
-    "VALUE":"'AdditionalCurrency2'"
+    "VALUE":"'CompanyCodeCurrency'"
    },
    {
     "STRUCOBJN":"YI_PYM_DDL_PAY_CUS_ALL_DATA",
-    "LFIELDNAME":"AMOUNTINCOMPANYCODECURRENCY",
-    "NAME":"SEMANTICS",
+    "LFIELDNAME":"AMOUNTINTRANSACTIONCURRENCY",
+    "NAME":"ENDUSERTEXT",
     "POSITION":7,
     "VALUE":""
    },
    {
     "STRUCOBJN":"YI_PYM_DDL_PAY_CUS_ALL_DATA",
-    "LFIELDNAME":"AMOUNTINCOMPANYCODECURRENCY",
-    "NAME":"SEMANTICS.AMOUNT.CURRENCYCODE",
+    "LFIELDNAME":"AMOUNTINTRANSACTIONCURRENCY",
+    "NAME":"ENDUSERTEXT.LABEL",
     "POSITION":8,
-    "VALUE":"'CompanyCodeCurrency'"
+    "VALUE":"'İşlem PB Cinsinden Tutar'"
    },
    {
     "STRUCOBJN":"YI_PYM_DDL_PAY_CUS_ALL_DATA",
@@ -140,6 +284,34 @@
     "NAME":"SEMANTICS.AMOUNT.CURRENCYCODE",
     "POSITION":6,
     "VALUE":"'TransactionCurrency'"
+   },
+   {
+    "STRUCOBJN":"YI_PYM_DDL_PAY_CUS_ALL_DATA",
+    "LFIELDNAME":"COMPANYCODECURRENCY",
+    "NAME":"ENDUSERTEXT",
+    "POSITION":15,
+    "VALUE":""
+   },
+   {
+    "STRUCOBJN":"YI_PYM_DDL_PAY_CUS_ALL_DATA",
+    "LFIELDNAME":"COMPANYCODECURRENCY",
+    "NAME":"ENDUSERTEXT.LABEL",
+    "POSITION":16,
+    "VALUE":"'Şirket Kodu PB'"
+   },
+   {
+    "STRUCOBJN":"YI_PYM_DDL_PAY_CUS_ALL_DATA",
+    "LFIELDNAME":"CURRENCY",
+    "NAME":"ENDUSERTEXT",
+    "POSITION":31,
+    "VALUE":""
+   },
+   {
+    "STRUCOBJN":"YI_PYM_DDL_PAY_CUS_ALL_DATA",
+    "LFIELDNAME":"CURRENCY",
+    "NAME":"ENDUSERTEXT.LABEL",
+    "POSITION":32,
+    "VALUE":"'Ödeme Tutarı PB'"
    },
    {
     "STRUCOBJN":"YI_PYM_DDL_PAY_CUS_ALL_DATA",
@@ -173,15 +345,29 @@
     "STRUCOBJN":"YI_PYM_DDL_PAY_CUS_ALL_DATA",
     "LFIELDNAME":"PAYMENTAMOUNT",
     "NAME":"SEMANTICS",
-    "POSITION":13,
+    "POSITION":29,
     "VALUE":""
    },
    {
     "STRUCOBJN":"YI_PYM_DDL_PAY_CUS_ALL_DATA",
     "LFIELDNAME":"PAYMENTAMOUNT",
     "NAME":"SEMANTICS.AMOUNT.CURRENCYCODE",
-    "POSITION":14,
+    "POSITION":30,
     "VALUE":"'Currency'"
+   },
+   {
+    "STRUCOBJN":"YI_PYM_DDL_PAY_CUS_ALL_DATA",
+    "LFIELDNAME":"TRANSACTIONCURRENCY",
+    "NAME":"ENDUSERTEXT",
+    "POSITION":9,
+    "VALUE":""
+   },
+   {
+    "STRUCOBJN":"YI_PYM_DDL_PAY_CUS_ALL_DATA",
+    "LFIELDNAME":"TRANSACTIONCURRENCY",
+    "NAME":"ENDUSERTEXT.LABEL",
+    "POSITION":10,
+    "VALUE":"'İşlem PB'"
    }
   ]
  },

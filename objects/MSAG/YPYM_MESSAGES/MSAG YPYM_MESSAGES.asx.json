@@ -254,6 +254,42 @@
     "DOKLRELES":"",
     "DOKLDATE":"0000-00-00",
     "DOKLTIME":"00:00:00"
+   },
+   {
+    "ID":"NA",
+    "OBJECT":"YPYM_MESSAGES015",
+    "LANGU":"D",
+    "TYP":"E",
+    "DOKVERSION":1,
+    "DOKSTATE":"N",
+    "DOKFORM":"S_DOCU_SHOW",
+    "DOKSTYLE":"S_DOCUS1",
+    "DOKFUSER":"SAP_CUSTOMER",
+    "DOKFRELES":"",
+    "DOKFDATE":"0000-00-00",
+    "DOKFTIME":"00:00:00",
+    "DOKLUSER":"SAP_CUSTOMER",
+    "DOKLRELES":"",
+    "DOKLDATE":"0000-00-00",
+    "DOKLTIME":"00:00:00"
+   },
+   {
+    "ID":"NA",
+    "OBJECT":"YPYM_MESSAGES016",
+    "LANGU":"D",
+    "TYP":"E",
+    "DOKVERSION":1,
+    "DOKSTATE":"N",
+    "DOKFORM":"S_DOCU_SHOW",
+    "DOKSTYLE":"S_DOCUS1",
+    "DOKFUSER":"SAP_CUSTOMER",
+    "DOKFRELES":"",
+    "DOKFDATE":"0000-00-00",
+    "DOKFTIME":"00:00:00",
+    "DOKLUSER":"SAP_CUSTOMER",
+    "DOKLRELES":"",
+    "DOKLDATE":"0000-00-00",
+    "DOKLTIME":"00:00:00"
    }
   ]
  },
@@ -407,6 +443,28 @@
    {
     "ID":"NA",
     "OBJECT":"YPYM_MESSAGES014",
+    "LANGU":"D",
+    "TYP":"E",
+    "VERSION":1,
+    "MASTERLANG":"X",
+    "TXTLINES":0,
+    "DOKSTATE":"N",
+    "SELFDEF":"3"
+   },
+   {
+    "ID":"NA",
+    "OBJECT":"YPYM_MESSAGES015",
+    "LANGU":"D",
+    "TYP":"E",
+    "VERSION":1,
+    "MASTERLANG":"X",
+    "TXTLINES":0,
+    "DOKSTATE":"N",
+    "SELFDEF":"3"
+   },
+   {
+    "ID":"NA",
+    "OBJECT":"YPYM_MESSAGES016",
     "LANGU":"D",
     "TYP":"E",
     "VERSION":1,
@@ -570,6 +628,18 @@
     "ARBGB":"YPYM_MESSAGES",
     "MSGNR":"014",
     "TEXT":"Ödeme belgesi daha önce yaratılmış."
+   },
+   {
+    "SPRSL":"T",
+    "ARBGB":"YPYM_MESSAGES",
+    "MSGNR":"015",
+    "TEXT":"Satıcı IBAN ı boş olan satırlar mevcut."
+   },
+   {
+    "SPRSL":"T",
+    "ARBGB":"YPYM_MESSAGES",
+    "MSGNR":"016",
+    "TEXT":"Müşteri IBAN ı boş olan satırlar mevcut."
    }
   ]
  },
@@ -608,98 +678,112 @@
     "ARBGB":"YPYM_MESSAGES",
     "MSGNR":"001",
     "NAME":"SAP_CUSTOMER",
-    "DATUM":"2025-12-08",
+    "DATUM":"2025-12-15",
     "SELFDEF":"3"
    },
    {
     "ARBGB":"YPYM_MESSAGES",
     "MSGNR":"002",
     "NAME":"SAP_CUSTOMER",
-    "DATUM":"2025-12-08",
+    "DATUM":"2025-12-15",
     "SELFDEF":"3"
    },
    {
     "ARBGB":"YPYM_MESSAGES",
     "MSGNR":"003",
     "NAME":"SAP_CUSTOMER",
-    "DATUM":"2025-12-08",
+    "DATUM":"2025-12-15",
     "SELFDEF":"3"
    },
    {
     "ARBGB":"YPYM_MESSAGES",
     "MSGNR":"004",
     "NAME":"SAP_CUSTOMER",
-    "DATUM":"2025-12-08",
+    "DATUM":"2025-12-15",
     "SELFDEF":"3"
    },
    {
     "ARBGB":"YPYM_MESSAGES",
     "MSGNR":"005",
     "NAME":"SAP_CUSTOMER",
-    "DATUM":"2025-12-08",
+    "DATUM":"2025-12-15",
     "SELFDEF":"3"
    },
    {
     "ARBGB":"YPYM_MESSAGES",
     "MSGNR":"006",
     "NAME":"SAP_CUSTOMER",
-    "DATUM":"2025-12-08",
+    "DATUM":"2025-12-15",
     "SELFDEF":"3"
    },
    {
     "ARBGB":"YPYM_MESSAGES",
     "MSGNR":"007",
     "NAME":"SAP_CUSTOMER",
-    "DATUM":"2025-12-08",
+    "DATUM":"2025-12-15",
     "SELFDEF":"3"
    },
    {
     "ARBGB":"YPYM_MESSAGES",
     "MSGNR":"008",
     "NAME":"SAP_CUSTOMER",
-    "DATUM":"2025-12-08",
+    "DATUM":"2025-12-15",
     "SELFDEF":"3"
    },
    {
     "ARBGB":"YPYM_MESSAGES",
     "MSGNR":"009",
     "NAME":"SAP_CUSTOMER",
-    "DATUM":"2025-12-08",
+    "DATUM":"2025-12-15",
     "SELFDEF":"3"
    },
    {
     "ARBGB":"YPYM_MESSAGES",
     "MSGNR":"010",
     "NAME":"SAP_CUSTOMER",
-    "DATUM":"2025-12-08",
+    "DATUM":"2025-12-15",
     "SELFDEF":"3"
    },
    {
     "ARBGB":"YPYM_MESSAGES",
     "MSGNR":"011",
     "NAME":"SAP_CUSTOMER",
-    "DATUM":"2025-12-08",
+    "DATUM":"2025-12-15",
     "SELFDEF":"3"
    },
    {
     "ARBGB":"YPYM_MESSAGES",
     "MSGNR":"012",
     "NAME":"SAP_CUSTOMER",
-    "DATUM":"2025-12-08",
+    "DATUM":"2025-12-15",
     "SELFDEF":"3"
    },
    {
     "ARBGB":"YPYM_MESSAGES",
     "MSGNR":"013",
     "NAME":"SAP_CUSTOMER",
-    "DATUM":"2025-12-08",
+    "DATUM":"2025-12-15",
     "SELFDEF":"3"
    },
    {
     "ARBGB":"YPYM_MESSAGES",
     "MSGNR":"014",
     "NAME":"SAP_CUSTOMER",
-    "DATUM":"2025-12-08",
+    "DATUM":"2025-12-15",
+    "SELFDEF":"3"
+   },
+   {
+    "ARBGB":"YPYM_MESSAGES",
+    "MSGNR":"015",
+    "NAME":"SAP_CUSTOMER",
+    "DATUM":"2025-12-15",
+    "SELFDEF":"3"
+   },
+   {
+    "ARBGB":"YPYM_MESSAGES",
+    "MSGNR":"016",
+    "NAME":"SAP_CUSTOMER",
+    "DATUM":"2025-12-15",
     "SELFDEF":"3"
    }
   ]

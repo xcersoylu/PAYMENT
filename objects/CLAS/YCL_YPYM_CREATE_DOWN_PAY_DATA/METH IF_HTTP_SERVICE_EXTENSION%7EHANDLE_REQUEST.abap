@@ -36,6 +36,7 @@
             ekpo~partnerreportedbusinessarea,
             ekpo~taxcode,
             ekpo~netpriceamount AS paymentamount,
+            ekko~documentcurrency AS currency,
             ekko~documentcurrency
     FROM i_purchaseorderapi01 AS ekko INNER JOIN i_purchaseorderitemapi01 AS ekpo ON ekpo~purchaseorder = ekko~purchaseorder
     INNER JOIN i_supplier AS supplier ON supplier~supplier = ekko~supplier
