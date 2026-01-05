@@ -7,9 +7,9 @@
     "DDLXNAME":"YMD_PYM_ARBITRAGE",
     "VERSION":"A",
     "CHANGED_BY":"SAP_CUSTOMER",
-    "CHANGED_ON":"2024-09-04",
-    "CHANGED_AT":"12:12:19",
-    "UUID":"CF477070255A1EEF9AD6DDC32F5EE18E",
+    "CHANGED_ON":"2025-12-28",
+    "CHANGED_AT":"11:45:42",
+    "UUID":"FA163EBBCF7E1FE0B8FC578E905EC74B",
     "ABAP_LANGUAGE_VERSION":"5"
    }
   ]
@@ -34,7 +34,7 @@
     "DDLXNAME":"YMD_PYM_ARBITRAGE",
     "VERSION":"A",
     "UUID":"",
-    "SOURCE":"@Metadata.layer: #CORE\r\n@UI:{\r\nheaderInfo:{\r\n                typeNamePlural: 'Arbitraj Hesapları',\r\n                typeName: 'Arbitraj Hesapları',\r\n                title:{ type: #STANDARD, label: 'Arbitraj Hesapları', value: 'Companycode' }\r\n           }\r\n}\r\nannotate entity YC_PYM_DDL_ARBITRAGE\r\n    with \r\n{\r\n  @UI.facet: [ { id:            'Arbitraj',\r\n                 purpose:       #STANDARD,\r\n                 type:          #IDENTIFICATION_REFERENCE,\r\n                 label:         'Arbitraj',\r\n                 position:      10 }  ]\r\n  @UI: { lineItem: [ { position: 10, importance: #HIGH } ] , identification: [{ position: 10 }] }\r\n@Consumption.valueHelpDefinition: [ { entity: { name: 'I_CompanyCode', element: 'CompanyCode' }}]     \r\n    Companycode;\r\n  @UI: { lineItem: [ { position: 20, importance: #HIGH } ] , identification: [{ position: 20 }] }    \r\n    Arbitrageaccount;\r\n  @UI: { lineItem: [ { position: 30, importance: #HIGH } ] , identification: [{ position: 30 }] }    \r\n    Paymenttype;\r\n  @UI: { lineItem: [ { position: 40, importance: #HIGH } ] , identification: [{ position: 40 }] }    \r\n    Accountingdocumenttype;\r\n    \r\n}"
+    "SOURCE":"@Metadata.layer: #CORE\r\n@UI:{\r\nheaderInfo:{\r\n                typeNamePlural: 'Arbitraj Hesapları',\r\n                typeName: 'Arbitraj Hesapları',\r\n                title:{ type: #STANDARD, label: 'Arbitraj Hesapları', value: 'Companycode' }\r\n           }\r\n}\r\nannotate entity YC_PYM_DDL_ARBITRAGE\r\n    with \r\n{\r\n  @UI.facet: [ { id:            'Arbitraj',\r\n                 purpose:       #STANDARD,\r\n                 type:          #IDENTIFICATION_REFERENCE,\r\n                 label:         'Arbitraj',\r\n                 position:      10 }  ]\r\n  @UI: { lineItem: [ { position: 10, importance: #HIGH } ] , identification: [{ position: 10 }] }\r\n@Consumption.valueHelpDefinition: [ { entity: { name: 'I_CompanyCode', element: 'CompanyCode' }}]     \r\n    Companycode;\r\n  @UI: { lineItem: [ { position: 20, importance: #HIGH } ] , identification: [{ position: 20 }] }    \r\n    Arbitrageaccount;\r\n  @UI: { lineItem: [ { position: 30, importance: #HIGH } ] , identification: [{ position: 30 }] }\r\n  @Consumption.valueHelpDefinition: [ { entity: { name: 'YVH_PYM_PAYMENTTYPE', element: 'Value' }}]          \r\n    Paymenttype;\r\n  @UI: { lineItem: [ { position: 40, importance: #HIGH } ] , identification: [{ position: 40 }] }    \r\n    Accountingdocumenttype;\r\n    \r\n}"
    }
   ]
  },
@@ -192,6 +192,20 @@
    {
     "DDLXNAME":"YMD_PYM_ARBITRAGE",
     "ELEMENT":"PAYMENTTYPE",
+    "NAME":"CONSUMPTION.VALUEHELPDEFINITION$1$.ENTITY.ELEMENT",
+    "ELEMENT_TYPE":"S",
+    "VALUE":"'Value'"
+   },
+   {
+    "DDLXNAME":"YMD_PYM_ARBITRAGE",
+    "ELEMENT":"PAYMENTTYPE",
+    "NAME":"CONSUMPTION.VALUEHELPDEFINITION$1$.ENTITY.NAME",
+    "ELEMENT_TYPE":"S",
+    "VALUE":"'YVH_PYM_PAYMENTTYPE'"
+   },
+   {
+    "DDLXNAME":"YMD_PYM_ARBITRAGE",
+    "ELEMENT":"PAYMENTTYPE",
     "NAME":"UI.IDENTIFICATION$1$.POSITION",
     "ELEMENT_TYPE":"S",
     "VALUE":"30"
@@ -283,8 +297,8 @@
     "EXTENDED_ARTIFACT":"YC_PYM_DDL_ARBITRAGE",
     "VARIANT":"",
     "LAYER":1500,
-    "DT_UUID":"CF477070255A1EEF9AD6DDC32F5EE18E",
-    "RT_HASH":"AD768A7F96EDD90C0EB53DFD6B88D73AC6A969C7",
+    "DT_UUID":"FA163EBBCF7E1FE0B8FC578E905EC74B",
+    "RT_HASH":"EFBC5868C95C65E642D8797B310CB0C28BF0A836",
     "GEN_VERSION":"0",
     "TYPE":"0"
    }
@@ -312,6 +326,16 @@
     "REF_OBJECT_TYPE":"STOB",
     "REF_OBJECT_SUBTYPE":"DO",
     "REF_OBJECT_NAME":"I_COMPANYCODE",
+    "REF_OBJECT_ELEMENT":""
+   },
+   {
+    "DDLXNAME":"YMD_PYM_ARBITRAGE",
+    "ELEMENT":"PAYMENTTYPE",
+    "NAME":"CONSUMPTION.VALUEHELPDEFINITION$1$.ENTITY.NAME",
+    "PATH":"YVH_PYM_PAYMENTTYPE",
+    "REF_OBJECT_TYPE":"STOB",
+    "REF_OBJECT_SUBTYPE":"DO",
+    "REF_OBJECT_NAME":"YVH_PYM_PAYMENTTYPE",
     "REF_OBJECT_ELEMENT":""
    }
   ]
